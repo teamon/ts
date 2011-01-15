@@ -1,6 +1,6 @@
 source :gemcutter
 
-gem "rack", "1.2.1"
+gem "rack", "1.1.0"
 gem 'sinatra', '1.0'
 gem "thin"
 gem "haml", "3.0.18"

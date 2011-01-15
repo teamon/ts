@@ -5,6 +5,19 @@ require "open-uri"
 
 require "pp"
 
+# !.8.6 compat
+class Array
+  def sample(n)
+    r = []
+    while r.size<n
+      r << rand(size)
+      r.uniq!
+    end
+    
+    r.map {|i| self[i]}
+  end
+end
+
 class TS
   class << self
     CACHE_FILE = "/tmp/cache.html"
