@@ -237,44 +237,43 @@ color:#f2f2f2;
 padding:5px 10px;
 }
 
-.error {
+.ts {
   padding: 15px;
+  list-style:none;
 }
-.error ul {
-  padding-bottom: 10px;
-}
-#examples {
-	padding-bottom: 15px;
-	overflow: hidden;
-}
-#examples a {
-	display: block;
-	width: 235px;
-	height: 150px;
-	float: left;
-	border: 5px solid #ddd;
-	margin-bottom: 20px;
-	margin-left: 10px;
-	background-position: center center;
-}
-#examples a.first {
-	margin-left: 0px;
+.ts ul {
+  padding: 10px 0 10px 40px;
+  list-style: none;
 }
 
-#pmore {
-    margin-bottom: 10px;
+.ts > li {
+    margin-top: 10px;
 }
 
-#pmore td.name input {
-    width: 145px;
+.ts li.correct_show {
+    background-color: #aeed91;
 }
 
-#pmore td.building input {
-    width: 40px;
+.ts li.good {
+    background-color: #aeed91;
 }
 
-#advanced {
-    display: none;
-    overflow: hidden;
+.ts li.bad {
+    background-color: #f3b6b7;
 }
+
+
+.control {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.score {
+    text-align: center;
+    font-weight: bold;
+    font-size: 11pt;
+    padding-bottom: 10px;
+}
+
+
 

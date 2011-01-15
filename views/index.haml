@@ -1,2 +1,16 @@
-%h2
-  Teoria Sygnałow
+%ul.ts
+	- @questions.each do |question|
+		%li
+			%h2= question[:text]
+			%ul
+				- question[:answers].each do |answer|
+					%li{:class => answer[:correct] && "correct"}
+						%input{:type => "checkbox"}
+						= answer[:text]
+	
+%div.score				
+%div.control
+	%input#show_correct{:type => "button", :value => "Pokaż poprawne odpowiedzi"}
+	%input#check_score{:type => "button", :value => "Sprawdź"}
+
+	

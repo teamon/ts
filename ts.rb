@@ -1,6 +1,9 @@
 require "sinatra"
 require "haml"
 require "nokogiri"
+require "open-uri"
+
+require "pp"
 
 class TS
   class << self
