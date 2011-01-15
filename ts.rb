@@ -13,17 +13,28 @@ class TS
       load
       @doc = Nokogiri::HTML(@data)
       
-      pp @doc.css("div.question").to_a.sample(n).map {|q0|
-        {
-          :text => q0.css("div.questionText").text.strip,
-          :answers => q0.css("ul li").map {|q1|
-            {
-              :text => q1.text.strip,
-              :correct => !!q1.css("input").attr("checked")
-            }
-          }
+      # @doc.css("div.question").to_a.select{|e| e.to_s =~ /q819/}.map do |q|
+      @doc.css("div.question").to_a.sample(n).map do |q|
+        q.css("input[type=text]").each {|o|
+          o["rel"] = o["value"]
+          o.remove_attribute("value")
+          o.remove_attribute("disabled")
         }
-      }
+        
+        q.css("option[selected='1']").each {|o|
+          o["class"] = "correct"
+          o.remove_attribute("selected")
+          o.content = o.text.sub(/^\*/, '')
+        }
+        
+        q.css("input[type=checkbox]").each {|c| 
+          x = c["checked"] == "1"
+          c.remove_attribute("checked")
+          c.remove_attribute("disabled") 
+          c.parent["class"] = "#{c.parent["class"]} correct" if x
+        }
+        q.to_html
+      end.join
     end
   
   
@@ -42,4 +53,8 @@ end
 get "/" do
   @questions = TS.sample(10)
   haml :index
+end
+
+if __FILE__ == $0
+  TS.sample(1)
 end

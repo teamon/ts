@@ -1,12 +1,5 @@
-%ul.ts
-	- @questions.each do |question|
-		%li
-			%h2= question[:text]
-			%ul
-				- question[:answers].each do |answer|
-					%li{:class => answer[:correct] && "correct"}
-						%input{:type => "checkbox"}
-						= answer[:text]
+.ts
+	= @questions
 	
 %div.score				
 %div.control

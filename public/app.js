@@ -8,25 +8,27 @@ $(document).ready(function(){
         } else {
             $(".correct").addClass("correct_show")
             $(this).val("Ukryj poprawne odpowiedzi")
+            $(".question input[type=text]").each(function(i,e){
+                $(e).val($(e).attr("rel"));
+            })
         }
         
         showed = !showed
     })
     
     $("#check_score").click(function(){
-        var questions = $("%ul.ts > li")
+        var questions = $(".question")
         var j = 0
         questions.each(function(i,e){
             if(check(e)) j++;
         })
         
         $(".score").text("Wynik: " + j + " / " + questions.size())
-        
     })
 })
 
-function XOR(a,b) {
-  return (a || b) && !(a && b);
+function XOR(a,b){
+    return (a && !b) || (!a && b)
 }
 
 function check(e){
@@ -36,12 +38,21 @@ function check(e){
     e.removeClass("bad")
     
     e.find("input[type=checkbox]").each(function(i,c){
-        var a = $(c).parent().hasClass("correct")
-        var b = c.checked
-        
-        console.log(a + " " + b + " " + ((a && !b) || (!a && b)))
-        
-        if((a && !b) || (!a && b)) {
+        if(XOR($(c).parent().hasClass("correct"), c.checked)) {
+            x = false
+            return false;
+        }
+    })
+    
+    e.find("option").each(function(i,c){
+        if(XOR($(c).hasClass("correct"), c.selected)) {
+            x = false
+            return false;
+        }
+    })
+    
+    e.find("input[type=text]").each(function(i,c){
+        if(XOR($(c).val(), $(c).attr("rel"))) {
             x = false
             return false;
         }

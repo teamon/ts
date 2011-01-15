@@ -68,66 +68,12 @@ font-weight:700;
 padding:5px 0 15px 15px;
 }
 
-h2 {
-color:#1f75cc;
-font-size:10pt;
-font-weight:700;
-padding:5px 15px 0 15px ;
-}
-
-h3 {
-color:#1f75cc;
-font-size:10pt;
-font-weight:700;
-padding:5px 0 ;
-}
-
-h4 {
-color:#1f75cc;
-font-size:8pt;
-font-weight:700;
-}
-
-
 
 h1 span {
 color:#aaa;
 font-size:6pt;
 }
 
-form {
-padding:20px;
-}
-
-fieldset label {
-float:left;
-padding:6px;
-text-align:right;
-width:100px;
-}
-
-fieldset textarea {
-border:1px solid #ccc;
-float:left;
-padding:3px;
-height:150px;
-width:750px;
-}
-
-form .actions {
-padding-bottom:10px;
-padding-top:10px;
-overflow:hidden;
-}
-
-form .actions input {
--webkit-border-radius:4px;
-background-color:#4e4e4e;
-border:none;
-color:#f2f2f2;
-float:right;
-padding:5px 10px;
-}
 
 #foot {
 color:#aaa;
@@ -146,90 +92,9 @@ width:250px;
 padding-bottom: 20px;
 }
 
-#more {
-float:left;
-line-height:11pt;
-width:400px;
-}
-
-#more a {
-color:#bbb;
-}
-
-#more a:hover {
-color:#555;
-}
-
-#howto ul {
-line-height:15px;
-padding-left:20px;
-}
-
-#howto ul li {
-list-style:decimal;
-}
-
-div.radio {
-  float: left;
-  width: 600px;
-}
-
-div.radio label {
-	float: left;
-	padding: 4px 27px 4px 4px;
-	/*width: 60px;*/
-}
-
-div.radio input {
-	float: left;
-}
 
 
-#menu li {
-	list-style: none;
-	float: left;
-	width: 370px;
-	margin: 0 15px 5px 15px;
-}
-
-#menu li a {
-	display: block;
-	text-align: center;
-	padding: 20px 0;
-	background-color: #eee;
-	font-size: 11pt;
-}
-
-
-table {
-	border-collapse: collapse;
-}
-table td, table th {
-	border: none;
-	padding: 3px 3px 0 0;
-}
-table td input {
-	border:1px solid #ccc;
-	padding:3px;
-	width:200px;
-}
-
-table td.avg {
-	text-align: center;
-	color:#1f75cc;
-	font-size:11pt;
-	font-weight:700;
-	padding: 10px;
-}
-
-table th.name { text-align: left; }
-
-table td.name input { width: 250px; }
-table td.ects input { width: 50px; text-align: center; margin: 0 0 0 5px;}
-table td.grade input { width: 50px; text-align: center; margin: 0 0 0 5px; }
-table td.name a { color: red;}
-table td.name a.f { color: #f5f5f5;}
-input.add {
+input[type=button] {
 -webkit-border-radius:4px;
 background-color:#4e4e4e;
 border:none;
@@ -241,17 +106,32 @@ padding:5px 10px;
   padding: 15px;
   list-style:none;
 }
-.ts ul {
-  padding: 10px 0 10px 40px;
-  list-style: none;
+.ts .question {
+  margin-top: 10px;
+  padding: 10px 0 10px 10px;
 }
 
-.ts > li {
-    margin-top: 10px;
+.ts .question ul {
+    list-style: none;
+    padding-left: 10px;
+    padding-top: 10px;
 }
 
-.ts li.correct_show {
+.ts .question ul li {
+    padding: 5px 0;
+}
+
+.ts .question .questionText {
+    color:#1f75cc;
+    font-size:10pt;
+    font-weight:700;
+    padding:5px 5px 0 5px ;
+}
+
+
+.ts .correct_show {
     background-color: #aeed91;
+    font-weight: bold;
 }
 
 .ts li.good {
