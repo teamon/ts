@@ -52,13 +52,17 @@ class TS
     end
   
     def fetch
-      puts "Checking #{CACHE_FILE}..."
-      data = File.read(CACHE_FILE)
-      puts "Using cache file"
-    rescue
-      puts "Cache not found. Loading #{DATA_URL}..."
-      data = open(DATA_URL).read
-      File.open(CACHE_FILE, "w"){|f| f.write @data }
+      begin
+        puts "Checking #{CACHE_FILE}..."
+        data = File.read(CACHE_FILE)
+        puts "Using cache file"
+      rescue
+        puts "Cache not found. Loading #{DATA_URL}..."
+        data = open(DATA_URL).read
+        File.open(CACHE_FILE, "w"){|f| f.write @data }
+      end
+      
+      data
     end
   end
 end
