@@ -23,11 +23,8 @@ class TS
     CACHE_FILE = "/tmp/cache.html"
     DATA_URL = "http://kefirnet.ath.cx/sygnaly/?pokaz"
     def sample(n)
-      load
-      @doc = Nokogiri::HTML(@data)
-      
       # @doc.css("div.question").to_a.select{|e| e.to_s =~ /q819/}.map do |q|
-      @doc.css("div.question").to_a.sample(n).map do |q|
+      doc.css("div.question").to_a.sample(n).map do |q|
         q.css("input[type=text]").each {|o|
           o["rel"] = o["value"]
           o.remove_attribute("value")
@@ -50,14 +47,17 @@ class TS
       end.join
     end
   
+    def doc
+      @doc ||= Nokogiri::HTML(fetch)
+    end
   
-    def load
+    def fetch
       puts "Checking #{CACHE_FILE}..."
-      @data = File.read(CACHE_FILE)
+      data = File.read(CACHE_FILE)
       puts "Using cache file"
     rescue
       puts "Cache not found. Loading #{DATA_URL}..."
-      @data = open(DATA_URL).read
+      data = open(DATA_URL).read
       File.open(CACHE_FILE, "w"){|f| f.write @data }
     end
   end
