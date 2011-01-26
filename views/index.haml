@@ -1,15 +1,25 @@
 %p.info 
-	Pytania ładownae z <a href="http://kefirnet.ath.cx/sygnaly/">http://kefirnet.ath.cx/sygnaly</a>. Thx mfly!
-	%br
-	%br
-	Aby dostać nowy zestaw pytań odswież strone.
+  Pytania ładowana z <a href="http://kefirnet.ath.cx/sygnaly/">http://kefirnet.ath.cx/sygnaly</a>. Thx mfly!
+  %br
+  %br
+  Aby dostać nowy zestaw pytań odswież strone.
+  %br
+  %br
+  %a{:href => '/all'} Wszystkie pytania
+  |
+  %a{:href => '/1..100'} 1..100
+  |
+  %a{:href => '/101..200'} 101..200
+  |
+  %a{:href => '/201..300'} 201..300
+  |
+  %a{:href => '/301..400'} 301..355
+
 
 .ts
-	= @questions
-	
-%div.score				
+  = @questions
+ 
+%div.score
 %div.control
-	%input#show_correct{:type => "button", :value => "Pokaż poprawne odpowiedzi"}
-	%input#check_score{:type => "button", :value => "Sprawdź"}
-
-	
+  %input#show_correct{:type => "button", :value => "Pokaż poprawne odpowiedzi"}
+  %input#check_score{:type => "button", :value => "Sprawdź"}

@@ -38,7 +38,7 @@ class TS
       yield(doc.css("div.question").to_a).reject{|e| e.nil?}.map do |q|
         q.css("input[type=text]").each {|o|
           p o
-          o["rel"] = o["value"]
+          (o["rel"] = o["value"]) rescue nil
           o.remove_attribute("value")
           o.remove_attribute("disabled")
         }
