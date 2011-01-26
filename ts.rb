@@ -23,9 +23,21 @@ class TS
     CACHE_FILE = "/tmp/cache.html"
     DATA_URL = "http://kefirnet.ath.cx/sygnaly/?pokaz"
     def sample(n)
-      # @doc.css("div.question").to_a.select{|e| e.to_s =~ /q819/}.map do |q|
-      doc.css("div.question").to_a.sample(n).map do |q|
+      process {|e| e.sample(n) }
+    end
+    
+    def all
+      process {|e| e}
+    end
+    
+    def range(x,y)
+      process {|e| e[(x-1)..(y-1)] || [] }
+    end
+    
+    def process
+      yield(doc.css("div.question").to_a).reject{|e| e.nil?}.map do |q|
         q.css("input[type=text]").each {|o|
+          p o
           o["rel"] = o["value"]
           o.remove_attribute("value")
           o.remove_attribute("disabled")
@@ -59,7 +71,7 @@ class TS
       rescue
         puts "Cache not found. Loading #{DATA_URL}..."
         data = open(DATA_URL).read
-        File.open(CACHE_FILE, "w"){|f| f.write @data }
+        File.open(CACHE_FILE, "w"){|f| f.write data }
       end
       
       data
@@ -69,6 +81,16 @@ end
 
 get "/" do
   @questions = TS.sample(10)
+  haml :index
+end
+
+get "/all" do
+  @questions = TS.all
+  haml :index
+end
+
+get "/:x..:y" do
+  @questions = TS.range(params[:x].to_i, params[:y].to_i)
   haml :index
 end
 
